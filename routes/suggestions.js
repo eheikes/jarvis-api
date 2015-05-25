@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET suggestions. */
 router.get('/', function(req, res, next) {
-  res.send('GET /suggest');
+  res.json([]);
 });
 
 module.exports = router;
