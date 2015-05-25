@@ -1,0 +1,25 @@
+{
+  "name": "jarvis-api",
+  "version": "0.1.0",
+  "description": "JARVIS server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eheikes/jarvis-api.git"
+  },
+  "author": "Eric Heikes <eheikes@gmail.com>",
+  "license": "Apache-2",
+  "bugs": {
+    "url": "https://github.com/eheikes/jarvis-api/issues"
+  },
+  "homepage": "https://github.com/eheikes/jarvis-api",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "config": "^1.13.0",
+    "js-yaml": "^3.3.1"
+  }
+}
