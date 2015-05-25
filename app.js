@@ -1,8 +1,9 @@
-var express      = require('express');
-var path         = require('path');
-var logger       = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
+var cookieParser = require('cookie-parser');
+var cors         = require('cors');
+var express      = require('express');
+var logger       = require('morgan');
+var path         = require('path');
 
 var home    = require('./routes/index');
 var stats   = require('./routes/stats');
@@ -14,6 +15,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
 
 app.use('/', home);
 app.use('/stats', stats);
