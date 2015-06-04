@@ -1,5 +1,5 @@
 var config = require('config');
-var Q      = require('kew');
+var Q      = require('q');
 
 // Make sure that the plugins object exists.
 config.plugins = config.plugins || {};
