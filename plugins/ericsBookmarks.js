@@ -28,6 +28,15 @@ EricsBookmarks.prototype.getItems = function(opts) {
   }).catch(console.log.bind(console));
 };
 
+EricsBookmarks.prototype.getStats = function() {
+  return this.getInfo().then(function(info) {
+    return {
+      today: { added: info.stats.addedToday, deleted: info.stats.deletedToday },
+      week: { added: info.stats.addedThisWeek, deleted: info.stats.deletedThisWeek }
+    };
+  }).catch(console.log.bind(console));
+};
+
 EricsBookmarks.prototype.getSuggestions = function() {
   var _this = this;
   return this.getInfo().then(function(info) {
