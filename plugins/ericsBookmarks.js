@@ -23,7 +23,7 @@ EricsBookmarks.prototype.getInfo = function() {
 EricsBookmarks.prototype.getItems = function(opts) {
   var offset = opts.offset;
   var count  = opts.count;
-  return Q.nfcall(request, this.url + '?count=' + count + '&offset=' + offset).then(function(response) {
+  return Q.nfcall(request, this.url + '?random&count=' + count + '&offset=' + offset).then(function(response) {
     return getBody(response).links;
   }).catch(console.log.bind(console));
 };
@@ -51,7 +51,7 @@ EricsBookmarks.prototype.getSuggestions = function() {
         name: item.title,
         url: item.link,
         summary: item.description ? item.description : '',
-        reason: 'old',
+        reason: 'random',
         actions: ['delete']
       };
     });
