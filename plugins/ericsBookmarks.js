@@ -50,7 +50,8 @@ EricsBookmarks.prototype.getSuggestions = function() {
         id: item.id + '',
         name: item.title,
         url: item.link,
-        summary: item.description ? item.description : '',
+        summary: (item.description ? item.description : '') +
+          (item.tags.length > 0 ? ' (' + item.tags.join(', ') + ')' : ''),
         reason: 'random',
         actions: ['delete']
       };
