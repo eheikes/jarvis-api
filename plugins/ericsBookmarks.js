@@ -1,5 +1,5 @@
 //
-// Plugin for Eric's custom bookmark app.
+// Plugin for Eric's custom bookmark app: https://github.com/eheikes/toread
 //
 var Q       = require('q');
 var request = require('request');
