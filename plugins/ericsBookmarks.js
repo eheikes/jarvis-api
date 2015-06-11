@@ -40,7 +40,7 @@ EricsBookmarks.prototype.getStats = function() {
 EricsBookmarks.prototype.getSuggestions = function() {
   var _this = this;
   return this.getInfo().then(function(info) {
-    var count = Math.max(10, info.stats.addedToday);
+    var count = Math.max(0, info.stats.addedToday - info.stats.deletedToday);
     var offset = info.total - count;
     return _this.getItems({ count: count, offset: offset });
   }).then(function(items) {
