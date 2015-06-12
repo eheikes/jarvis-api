@@ -2,7 +2,7 @@
 
 > JARVIS: Just a rather very intelligent system
 
-This project is the API part of the JARVIS system. It's a collection of various plugins for managing your busy life.
+This project is the API part of the JARVIS system. It's a collection of various plugins for managing your busy life. (Use the [jarvis-client](https://github.com/eheikes/jarvis-client) for a UI frontend.)
 
 ## Installation
 
