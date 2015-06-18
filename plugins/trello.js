@@ -30,6 +30,7 @@ function getWeekAgo() {
 }
 
 TrelloPlugin.prototype.getStats = function() {
+  var _this = this;
   return Q.ninvoke(
     this.trello, 'get',
     '/1/boards/' + this.boardId + '/actions',
@@ -43,7 +44,8 @@ TrelloPlugin.prototype.getStats = function() {
   ).then(function(actions) {
     var initial = {
       today: { added: 0, deleted: 0 },
-      week: { added: 0, deleted: 0 }
+      week: { added: 0, deleted: 0 },
+      plugin: _this.name
     };
     return actions.reduce(function(previousVal, currentVal) {
       var key = (currentVal.type === 'createCard' ? 'added' : 'deleted');

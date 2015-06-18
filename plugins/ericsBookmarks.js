@@ -29,10 +29,12 @@ EricsBookmarks.prototype.getItems = function(opts) {
 };
 
 EricsBookmarks.prototype.getStats = function() {
+  var _this = this;
   return this.getInfo().then(function(info) {
     return {
       today: { added: info.stats.addedToday, deleted: info.stats.deletedToday },
-      week: { added: info.stats.addedThisWeek, deleted: info.stats.deletedThisWeek }
+      week: { added: info.stats.addedThisWeek, deleted: info.stats.deletedThisWeek },
+      plugin: _this.name
     };
   }).catch(console.log.bind(console));
 };

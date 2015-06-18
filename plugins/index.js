@@ -1,4 +1,5 @@
 var config = require('config');
+var extend = require('extend');
 var Q      = require('q');
 
 // Make sure that the plugins object exists.
@@ -23,7 +24,8 @@ exports.getStats = function() {
   return Q.all(callEachPlugin('getStats')).then(function(results) {
     var initialStats = {
       today: { added: 0, deleted: 0 },
-      week:  { added: 0, deleted: 0 }
+      week:  { added: 0, deleted: 0 },
+      breakdown: []
     };
     return results.reduce(function(prev, current) {
       return {
@@ -34,7 +36,8 @@ exports.getStats = function() {
         week: {
           added: prev.week.added + current.week.added,
           deleted: prev.week.deleted + current.week.deleted,
-        }
+        },
+        breakdown: prev.breakdown.concat(current)
       };
     }, initialStats);
   });
