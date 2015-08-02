@@ -1,3 +1,5 @@
+'use strict';
+
 var config = require('config');
 var extend = require('extend');
 var Q      = require('q');
@@ -9,7 +11,7 @@ config.plugins = config.plugins || {};
 var plugins = Object.keys(config.plugins).map(function(name) {
   var pluginConfig = config.plugins[name];
   var type = pluginConfig.type;
-  if (!type) return;
+  if (!type) { return; }
   var PluginConstructor = require('./' + type);
   return new PluginConstructor(name, pluginConfig);
 });
@@ -17,7 +19,7 @@ var plugins = Object.keys(config.plugins).map(function(name) {
 var callEachPlugin = function(methodName) {
   return plugins.map(function(plugin) {
     return plugin[methodName]();
-  })
+  });
 };
 
 exports.getStats = function() {

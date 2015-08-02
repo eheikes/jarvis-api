@@ -7,6 +7,8 @@
 // To get a token, go to: https://trello.com/1/authorize?key=APPKEY&name=JARVIS&expiration=never&response_type=token&scope=read,write
 //   where APPKEY is replaced with your key.
 //
+'use strict';
+
 var Q       = require('q');
 var request = require('request');
 var Trello  = require('node-trello');

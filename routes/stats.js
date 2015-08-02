@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var plugins = require('../plugins');
 var router = express.Router();
