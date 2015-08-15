@@ -17,6 +17,8 @@ function TrelloPlugin(name, opts) {
   this.name = name;
   this.trello = new Trello(opts.key, opts.token);
   this.boardId = opts.board;
+
+  this.debug = require('debug')('jarvis-api:' + this.name);
 }
 
 function getOneDayAgo() {
@@ -57,7 +59,7 @@ TrelloPlugin.prototype.getStats = function() {
       }
       return previousVal;
     }, initial);
-  }).catch(console.log.bind(console));
+  }).catch(this.debug.bind(this));
 };
 
 TrelloPlugin.prototype.getSuggestions = function() {
@@ -95,7 +97,7 @@ TrelloPlugin.prototype.getSuggestions = function() {
         actions: ['archive']
       };
     });
-  }).catch(console.log.bind(console));
+  }).catch(this.debug.bind(this));
 };
 
 module.exports = TrelloPlugin;

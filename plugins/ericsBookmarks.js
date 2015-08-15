@@ -9,6 +9,8 @@ var request = require('request');
 function EricsBookmarks(name, opts) {
   this.name = name;
   this.url  = opts.url;
+
+  this.debug = require('debug')('jarvis-api:' + this.name);
 }
 
 // Returns parsed JSON from a Q.nfcall(request, ...)
@@ -19,7 +21,7 @@ function getBody(nfcallResponse) {
 EricsBookmarks.prototype.getInfo = function() {
   return Q.nfcall(request, this.url + '?count=0&offset=0').then(function(response) {
     return getBody(response);
-  }).catch(console.log.bind(console));
+  }).catch(this.debug.bind(this));
 };
 
 EricsBookmarks.prototype.getItems = function(opts) {
@@ -27,7 +29,7 @@ EricsBookmarks.prototype.getItems = function(opts) {
   var count  = opts.count;
   return Q.nfcall(request, this.url + '?random&count=' + count + '&offset=' + offset).then(function(response) {
     return getBody(response).links;
-  }).catch(console.log.bind(console));
+  }).catch(this.debug.bind(this));
 };
 
 EricsBookmarks.prototype.getStats = function() {
@@ -38,7 +40,7 @@ EricsBookmarks.prototype.getStats = function() {
       week: { added: info.stats.addedThisWeek, deleted: info.stats.deletedThisWeek },
       plugin: _this.name
     };
-  }).catch(console.log.bind(console));
+  }).catch(this.debug.bind(this));
 };
 
 EricsBookmarks.prototype.getSuggestions = function() {
@@ -60,7 +62,7 @@ EricsBookmarks.prototype.getSuggestions = function() {
         actions: ['delete']
       };
     });
-  }).catch(console.log.bind(console));
+  }).catch(this.debug.bind(this));
 };
 
 module.exports = EricsBookmarks;
